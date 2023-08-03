@@ -1,22 +1,21 @@
 import argparse
-import re
-from datetime import date
 
 from beancount import loader
-from beancount.core import data
-from beancount.parser import parser, printer
+from beancount.parser import printer
 
-from modules.imports.alipay import Alipay
 from modules.imports.abc_credit import ABCCredit
+from modules.imports.alipay import Alipay
+from modules.imports.alipay_prove import AlipayProve
 from modules.imports.ccb_credit import CCBCredit
 from modules.imports.citic_credit import CITICCredit
 from modules.imports.cmb_credit import CMBCredit
+from modules.imports.cmb_pdf_credit import CMBPdfCredit
 from modules.imports.cmbc_credit import CMBCCredit
 from modules.imports.icbc_credit import ICBCCredit
 from modules.imports.icbc_debit import ICBCDebit
 from modules.imports.wechat import WeChat
 from modules.imports.yuebao import YuEBao
-from modules.imports.alipay_prove import AlipayProve
+import traceback
 
 parser = argparse.ArgumentParser("import")
 parser.add_argument("path", help="CSV Path")
@@ -28,7 +27,7 @@ args = parser.parse_args()
 entries, errors, option_map = loader.load_file(args.entry)
 
 importers = [Alipay, AlipayProve, YuEBao, WeChat,
-             ABCCredit, CCBCredit, CITICCredit, CMBCCredit, CMBCredit, ICBCCredit,
+             ABCCredit, CCBCredit, CITICCredit, CMBCCredit, CMBCredit, ICBCCredit, CMBPdfCredit,
              ICBCDebit]
 instance = None
 for importer in importers:
