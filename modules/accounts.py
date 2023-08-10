@@ -1,9 +1,7 @@
 import re
 
-import dateparser
 
-
-def get_eating_account(from_user, description, time=None):
+def get_eating_account(payee, description, time=None):
     if time == None or not hasattr(time, 'hour'):
         return 'Expenses:Eating:Others'
     elif time.hour <= 3 or time.hour >= 21:
@@ -40,7 +38,6 @@ accounts = {
 }
 
 descriptions = {
-    #'滴滴打车|滴滴快车': get_didi,
     '余额宝.*收益发放': 'Assets:Company:Alipay:MonetaryFund',
     '转入到余利宝': 'Assets:Bank:MyBank',
     '花呗收钱服务费': 'Expenses:Fee',
@@ -48,13 +45,26 @@ descriptions = {
     '信用卡自动还款|信用卡还款': get_credit_return,
     '外卖订单': get_eating_account,
     '美团订单': get_eating_account,
-    '上海交通卡发行及充值': 'Expenses:Transport:Card',
-    '地铁出行': 'Expenses:Transport:City',
-    '火车票': 'Expenses:Travel:Transport',
 }
 
 anothers = {
-    '上海拉扎斯': get_eating_account
+    '上海拉扎斯': get_eating_account,
+    '友宝|.*友宝昂莱.*': 'Expenses:Dining:Drink',
+    '北京一卡通': 'Expenses:Traffic:Bus',
+    '吴裕泰.*|CoCo都可.*|星巴克.*|喜茶.*|蜜雪冰城.*': 'Expenses:Dining:Drink',
+    '北京中燃天天然气': 'Expenses:Dining:Diet',
+    '.*汉堡王.*|.*肯德基.*|金拱门.*|鲜芋仙.*': 'Expenses:Dining:Diet',
+    '老街围炉麻辣烫.*': 'Expenses:Dining:Diet',
+    '上嘉超市.*|北京维果蔬农副产品.*|超市发.*|鲜又多果蔬连锁超市.*|生活便利超市.*|都市优选.*|快客.*': 'Expenses:Groceries',
+    '.*车充安.*|.*全来电.*|小绿人充电': 'Expenses:Traffic:Bike',
+    '掌上生活话费充值': 'Expenses:Utilities:CellPhone',
+    '铁道部.*|中铁网络.*|.*12306.*': 'Expenses:Traffic:Train',
+    '北京自来水': 'Expenses:Utilities:Water',
+    '北京电力|沧州供电公司': 'Expenses:Utilities:Electricity',
+    '顺丰速运': 'Expenses:Utilities:Express',
+    '滴滴出租车|滴滴打车|滴滴快车': 'Expenses:Traffic:Taxi',
+    '迪卡侬.*|优衣库.*': 'Expenses:Clothing',
+
 }
 
 incomes = {

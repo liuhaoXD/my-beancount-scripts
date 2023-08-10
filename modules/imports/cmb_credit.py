@@ -112,7 +112,6 @@ class CMBCredit():
             real_currency = 'CNY'
             real_price = tds[4].text.replace('￥', '').replace('¥', '').replace('\xa0', '').strip()
             print("Importing {} at {}".format(description, time))
-            account = get_account_by_guess(description, '', time)
             flag = "!"
             amount = float(real_price.replace(',', ''))
 
@@ -131,9 +130,20 @@ class CMBCredit():
                 tags = ['meituan']
                 payee = description
                 description = ''
+            elif payee == '京东支付':
+                tags = ['jingdong']
+                payee = description
+                description = ''
+            elif payee == '合众易宝（抖音支付）' or payee == '合众易宝':
+                tags = ['douyin']
+                payee = description
+                description = ''
+            elif payee == '北京友宝昂莱科技有限公司':
+                payee = '友宝'
 
             entry = Transaction(meta, time, flag, payee, description, tags, data.EMPTY_SET, [])
 
+            account = get_account_by_guess(payee, description, time)
             if real_currency == trade_currency:
                 data.create_simple_posting(entry, account, trade_price, trade_currency)
             else:

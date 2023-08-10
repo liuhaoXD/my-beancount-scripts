@@ -8,19 +8,19 @@ def replace_flag(entry, flag):
     return entry._replace(flag='!')
 
 
-def get_account_by_guess(from_user, description, time=None):
+def get_account_by_guess(payee, description, time=None):
     if description != '':
         for key, value in descriptions.items():
             if description_res[key].findall(description):
                 if callable(value):
-                    return value(from_user, description, time)
+                    return value(payee, description, time)
                 else:
                     return value
                 break
     for key, value in anothers.items():
-        if another_res[key].findall(from_user):
+        if another_res[key].findall(payee):
             if callable(value):
-                return value(from_user, description, time)
+                return value(payee, description, time)
             else:
                 return value
             break
