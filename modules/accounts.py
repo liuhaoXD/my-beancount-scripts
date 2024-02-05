@@ -1,6 +1,5 @@
 import re
 
-
 def get_eating_account(payee, description, time=None):
     if time == None or not hasattr(time, 'hour'):
         return 'Expenses:Eating:Others'
@@ -49,22 +48,23 @@ descriptions = {
 
 anothers = {
     '上海拉扎斯': get_eating_account,
-    '友宝|.*友宝昂莱.*': 'Expenses:Dining:Drink',
+    '便电通.*|友宝|.*友宝昂莱.*': 'Expenses:Dining:Drink',
     '北京一卡通': 'Expenses:Traffic:Bus',
-    '吴裕泰.*|CoCo都可.*|星巴克.*|喜茶.*|蜜雪冰城.*': 'Expenses:Dining:Drink',
+    '怂柠.*|茶话弄.*|沪上阿姨.*|吴裕泰.*|CoCo都可.*|星巴克.*|喜茶.*|蜜雪冰城.*': 'Expenses:Dining:Drink',
     '北京中燃天天然气': 'Expenses:Dining:Diet',
-    '.*汉堡王.*|.*肯德基.*|金拱门.*|鲜芋仙.*': 'Expenses:Dining:Diet',
-    '老街围炉麻辣烫.*': 'Expenses:Dining:Diet',
-    '上嘉超市.*|北京维果蔬农副产品.*|超市发.*|鲜又多果蔬连锁超市.*|生活便利超市.*|都市优选.*|快客.*': 'Expenses:Groceries',
-    '.*车充安.*|.*全来电.*|小绿人充电': 'Expenses:Traffic:Bike',
+    '觀盛楼.*|.*汉堡王.*|.*肯德基.*|金拱门.*|鲜芋仙.*': 'Expenses:Dining:Diet',
+    '吉野家.*|.*宏状元.*|连姐肉饼.*|老街围炉麻辣烫.*': 'Expenses:Dining:Diet',
+    '.*火锅鸡.*|高兴火锅.*|友仁居.*': 'Expenses:Dining:Feast',
+    '鲜市吉.*|柒一拾壹.*|.*盒马.*|.*超市|好德百汇.*|上嘉超市.*|北京维果蔬农副产品.*|超市发.*|鲜又多果蔬连锁超市.*|生活便利超市.*|都市优选.*|快客.*': 'Expenses:Groceries',
+    '安心充.*|.*车充安.*|.*全来电.*|小绿人充电|上海哈啰.*': 'Expenses:Traffic:Bike',
     '掌上生活话费充值': 'Expenses:Utilities:CellPhone',
     '铁道部.*|中铁网络.*|.*12306.*': 'Expenses:Traffic:Train',
     '北京自来水': 'Expenses:Utilities:Water',
-    '北京电力|沧州供电公司': 'Expenses:Utilities:Electricity',
+    '网上国网|北京电力|沧州供电公司': 'Expenses:Utilities:Electricity',
     '顺丰速运': 'Expenses:Utilities:Express',
-    '滴滴出租车|滴滴打车|滴滴快车': 'Expenses:Traffic:Taxi',
+    '滴滴出行|滴滴出租车|滴滴打车|滴滴快车': 'Expenses:Traffic:Taxi',
     '迪卡侬.*|优衣库.*': 'Expenses:Clothing',
-
+    '华住集团*': 'Expenses:Hotel',
 }
 
 incomes = {

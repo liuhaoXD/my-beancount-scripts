@@ -1,7 +1,9 @@
-from beancount.query import query, query_compile
-from beancount.query.query_env import TargetsEnvironment
-from ..accounts import *
 import csv
+
+from beancount.query import query_compile
+from beancount.query.query_env import TargetsEnvironment
+
+from ..accounts import *
 
 
 def replace_flag(entry, flag):

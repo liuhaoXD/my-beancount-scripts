@@ -1,6 +1,4 @@
-import time
 from datetime import datetime, timedelta, tzinfo
-from string import Template
 from urllib.parse import unquote
 
 import requests

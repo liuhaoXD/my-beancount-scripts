@@ -1,13 +1,11 @@
-import calendar
-import csv
 import re
-from zipfile import ZipFile
 from datetime import date
 from io import StringIO, BytesIO
+from zipfile import ZipFile
 
 import dateparser
 from beancount.core import data
-from beancount.core.data import Note, Transaction
+from beancount.core.data import Transaction
 
 from . import (DictReaderStrip, get_account_by_guess,
                get_income_account_by_guess)

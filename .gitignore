@@ -6,3 +6,6 @@ __pycache__
 Thumbs.db
 .bak
 .idea
+venv
+out.bean
+*.sh

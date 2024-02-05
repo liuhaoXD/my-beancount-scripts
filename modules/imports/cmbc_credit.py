@@ -1,21 +1,14 @@
-import calendar
-import csv
 from datetime import date
-from io import StringIO
 
-import dateparser
 import eml_parser
 from beancount.core import data
-from beancount.core.data import Note, Transaction
+from beancount.core.data import Transaction
 from bs4 import BeautifulSoup
 
-from . import (DictReaderStrip, get_account_by_guess,
-               get_income_account_by_guess)
-from .base import Base
+from . import (get_account_by_guess)
 from .deduplicate import Deduplicate
 
 Account民生 = 'Liabilities:CreditCard:CMBC'
-
 
 class CMBCCredit():
 

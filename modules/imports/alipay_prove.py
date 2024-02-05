@@ -1,19 +1,17 @@
-import calendar
-import csv
 import re
-from pyzipper import AESZipFile
 from datetime import date
 from io import BytesIO, StringIO
 
 import dateparser
 from beancount.core import data
-from beancount.core.data import Note, Transaction
+from beancount.core.data import Transaction
+from pyzipper import AESZipFile
 
-from ..accounts import accounts
 from . import (DictReaderStrip, get_account_by_guess,
-               get_income_account_by_guess, replace_flag)
+               get_income_account_by_guess)
 from .base import Base
 from .deduplicate import Deduplicate
+from ..accounts import accounts
 
 AccountAssetUnknown = 'Assets:Unknown'
 Account余利宝 = accounts['余利宝'] if '余利宝' in accounts else 'Assets:Bank:MyBank'

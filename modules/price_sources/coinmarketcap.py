@@ -1,14 +1,10 @@
-import requests
-import time
 import json
 from datetime import datetime, tzinfo, timedelta
 from string import Template
 
-from bs4 import BeautifulSoup
-
+import requests
 from beancount.core.number import D
 from beancount.prices import source
-from beancount.utils.date_utils import parse_date_liberally
 
 ZERO = timedelta(0)
 BASE_URL_TEMPLATE = Template(

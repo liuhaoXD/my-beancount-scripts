@@ -15,7 +15,6 @@ from modules.imports.icbc_credit import ICBCCredit
 from modules.imports.icbc_debit import ICBCDebit
 from modules.imports.wechat import WeChat
 from modules.imports.yuebao import YuEBao
-import traceback
 
 parser = argparse.ArgumentParser("import")
 parser.add_argument("path", help="CSV Path")
