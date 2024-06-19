@@ -26,7 +26,7 @@ args = parser.parse_args()
 entries, errors, option_map = loader.load_file(args.entry)
 
 importers = [Alipay, AlipayProve, YuEBao, WeChat,
-             ABCCredit, CCBCredit, CITICCredit, CMBCCredit, CMBCredit, ICBCCredit, CMBPdfCredit,
+             ABCCredit, CCBCredit, CITICCredit, CMBCCredit, CMBCredit, ICBCCredit,
              ICBCDebit]
 instance = None
 for importer in importers:
